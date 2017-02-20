@@ -67,6 +67,7 @@ s=input("Insert a phrase to search for on twitter!")
 
 try:
     f=open(str(s)+"_twitter_results.txt",'r', encoding="utf-8")
+
 except:
     results = api.search(q=s)
     f = open(str(s)+"_twitter_results.txt",'w')
@@ -81,11 +82,19 @@ count=0
 
 while count < 3:
     for item in dictionary['statuses']:
-        print("TEXT: " + str(item['text'].encode("utf-8")))
-        print ("CREATED AT: " + str(item['created_at'].encode("utf-8")))
+        k = str(item['text'].encode("utf-8"))
+        l = list(k)
+        l = l[2:-1]
+        k=''.join(l)
+        print ("TEXT: " + str(k))
+        m = str(item['created_at'].encode("utf-8"))
+        n = list(m)
+        n = n[2:-1]
+        m=''.join(n)
+        print ("CREATED AT: " + str(m))
         print()
         count+=1
-        if count ==3:
+        if count == 3:
             break
 
 
